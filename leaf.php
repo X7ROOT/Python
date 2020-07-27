@@ -4,7 +4,7 @@
  * @version : 2.8
 **/
 
-$password = ""; // Password 
+$password = "2020sanasa3ida"; // Password 
 
 
 
